@@ -32,21 +32,30 @@ public class HealthHubAppointmentscenarioIOS implements HealthHubAppointment {
     @iOSFindBy(accessibility = "loginButton")
     private MobileElement Signin;
 
-    @FindBy(xpath = "//XCUIElementTypeOther[@name=\"Search results\"]/XCUIElementTypeCell/XCUIElementTypeStaticText")
-    private MobileElement firstSearchResultName;
+    @iOSFindBy(accessibility = "searchButton")
+    private MobileElement DoctorSearchbutton;
+    
+    @iOSFindBy(accessibility = "searchTextField")
+    private MobileElement SearchDoctor;
+    
+    @iOSFindBy(accessibility = "secondCell")
+    private MobileElement Doctorclick;
+    
+    
+    
 
     public void Username(String name) 
     {
     	Username.click();
-    	Username.sendKeys("200002840");
+    	Username.sendKeys(name);
     	
     	
     }
     
-    public void Password(String name) 
+    public void Password(String password) 
     {
     	Password.click();
-    	Password.sendKeys("Welcome@1");
+    	Password.sendKeys(password);
     	
     	
     }
@@ -54,12 +63,52 @@ public class HealthHubAppointmentscenarioIOS implements HealthHubAppointment {
     public void Signin() 
     {
     	Signin.click();
+    	
+    	try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     
     	
     	
     }
     
+    public void Doctor_Speciality_Button()
+    {
+    	
+    	DoctorSearchbutton.click();
+    }
+    
+    public void SearchDoctor(String Doctorname)
+    {
+    	SearchDoctor.click();
+    	SearchDoctor.sendKeys(Doctorname);
+    }
  
+    public void ClickonDoctor()
+    {
+    	
+    	try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	
+    	
+    	Doctorclick.click();
+    	
+    	try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    
+    	
+    }
 
     public void Login() {
     	try {
@@ -71,12 +120,24 @@ public class HealthHubAppointmentscenarioIOS implements HealthHubAppointment {
     	Login.click();
     	
     }
+
+	@Override
+	public void assertSearchResult(String expectedResult) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void navigateToSearchResultDetails() {
+		// TODO Auto-generated method stub
+		
+	}
     
-    public void assertSearchResult(String expectedResult) {
+   /* public void assertSearchResult(String expectedResult) {
         Assert.assertEquals(expectedResult, firstSearchResultName.getText());
     }
 
     public void navigateToSearchResultDetails() {
         firstSearchResultName.click();
-    }
+    }*/
 }

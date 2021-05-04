@@ -15,4 +15,7 @@ public interface HealthHubAppointment {
     void navigateToSearchResultDetails();
 	void Password(String password);
 	void Signin();
+	void Doctor_Speciality_Button();
+	void SearchDoctor(String Doctorname);
+	void ClickonDoctor();
 }
